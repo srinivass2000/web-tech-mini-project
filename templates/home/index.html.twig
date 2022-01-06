@@ -1,0 +1,226 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Slots{% endblock %}
+
+{% block body %}
+
+{% include 'navbar.html.twig' %}
+<div class="flex justify-center">
+    {% if slots %}
+    <div class="container"> 
+        <div class="mt-2 py-3 flex justify-center items-center border-b-4">
+        {% set dateTime = date(slots[0][1]) %}
+        <span class="day text-2xl font-semibold m-1">Slots for </span>
+        <span class="day text-2xl font-semibold m-1">{{ dateTime | date('d') }}</span>
+        <span class="month text-2xl font-semibold m-1">{{ dateTime | date('F') }}</span>
+        <span class="year text-2xl font-semibold m-1">{{ dateTime | date('Y') }}</span>
+        </div>
+      
+         <section class="body-font">
+         
+            <div class="container mb-10 mx-auto">
+             <div class="flex justify-start bg-gray-200 px-3 py-2 mb-12">
+             <label class="text-lg px-2 py-1 text-gray-700"for="filter"><i class="fa fa-filter fa-sm"></i> Filter slots by </label>
+            <select id="filter" class="form-select block border-2 border-gray-300 px-1 rounded-lg text-sm shadow focus:bg-gray-100 focus:border-gray-500">
+                <option id="show-all" selected>All</option>
+                <option id="show-available">Available</option>
+            </select>
+            </div>
+
+                <div class="flex flex-wrap gap-8 m-14 justify-center">
+        {% for slot in slots %}
+        {% set currentDate = date()|date('Y-m-d H:i:s', "Asia/Kolkata") %}
+        {% set todayDate = slot[1]~" "~slot[2] %}
+          {% set diff = date(currentDate).diff(date(todayDate)) %}
+          {% if diff.invert == 1%}
+              <div class="booked h-full bg-gray-400 text-white bg-white border-gray-200 border p-4 rounded-lg shadow-2xl">
+                <p class="text-xl font-semibold m-1 mb-4">Time: {{ slot[2] }}</p>
+                {# <a href="/book/{{slot[0]}}/{{app.user.id}}" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book slot</a> #}
+                <p class="text-xl text-gray-300 font-semibold m-1">Unavailable</p>
+                {# <button data-id="{{ slot[0] }}" class="book-slot" value={{ slot[0] }}>Book Slot</button> #}
+            </div>
+            {% endif %}
+
+        {% if diff.invert == 0 %}
+         {% if slot[3] == 0 %}
+        <div class="all h-full bg-green-400 text-white bg-white border-gray-200 border p-4 rounded-lg shadow-2xl">
+                <p class="text-xl font-semibold m-1">Time: {{ slot[2] }}</p>
+                {# <a href="/book/{{slot[0]}}/{{app.user.id}}" class="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book slot</a> #}
+                <button value={{ slot[0] }} class="modal-open book-slot mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Book slot</button>
+                {# <button data-id="{{ slot[0] }}" class="book-slot" value={{ slot[0] }}>Book Slot</button> #}
+        </div>
+        {% endif %}
+
+        {% if slot[3] == 1 %}
+        <div class="booked h-full bg-red-500 text-white border-gray-200 border p-4 rounded-lg shadow-2xl">
+                <p class="text-xl font-semibold m-1 mb-4">Time: {{ slot[2] }}</p>
+                <p class="text-xl text-gray-300 font-semibold m-1">Booked</p>
+                {# <button data-id="{{ slot[0] }}" class="book-slot" value={{ slot[0] }}>Book Slot</button> #}
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% endfor %}
+        </div>
+        </div>
+        </section>
+
+    </div>
+    
+    {% else %}
+        <div class="flex flex-col justify-center items-center h-screen">
+            <h1 class="text-2xl text-gray-500 font-semibold -mt-36">Sorry, we are not available for this day :(</h1>
+            <a href="/home" class="mt-5 px-3 py-1 bg-green-500 text-white hover:bg-green-600 rounded text-lg">Pick another date</a>
+        </div>
+    {% endif %}
+  </div>
+
+<!--Slot Booking Modal-->
+<div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+    
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      
+
+      <!-- Add margin if you want to see some of the overlay behind the modal-->
+      <div class="modal-content py-4 text-left px-6">
+        <!--Title-->
+        <div class="flex justify-between items-center pb-3 mb-5">
+          <p class="text-2xl text-center w-full font-semibold">Confirm your slot</p>
+          <div class="modal-close cursor-pointer z-50">
+          </div>
+        </div>
+
+        <!--Body-->
+        <div class="flex flex-col">
+            {{ form_start(booking_form) }}
+              <div class="flex text-gray-500 justify-around mb-3 border-b-2 rounded-lg border-green-500 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-lg text-center">
+                Name : {{app.user.name}}
+              </div>
+
+              <div class="flex text-gray-500 justify-around mb-3 border-b-2 rounded-lg border-green-500 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-lg text-center">
+                Phone Number : {{app.user.phone}}
+              </div>
+
+              <div class="flex text-gray-500 justify-around mb-3 border-b-2 rounded-lg border-green-500 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-lg text-center">
+                Email : {{app.user.email}}
+              </div>
+
+              <div id="book-date" class="flex text-gray-500 justify-around mb-3 border-b-2 rounded-lg border-green-500 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-lg text-center">                
+              </div>
+
+              <div id="book-time" class="flex text-gray-500 justify-around mb-3 border-b-2 rounded-lg border-green-500 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-lg text-center">                
+              </div>
+
+              <div class="flex justify-center mb-3 border-b-2 rounded-lg border-green-500 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-lg">
+                {{ form_label(booking_form.category) }}
+                {{ form_widget(booking_form.category, {'attr': {'class': 'border-2 ml-3 rounded focus:border-green-500'}}) }}
+              </div>
+
+              <div class="text-lg text-center flex justify-center">
+              {{ form_widget(booking_form.save,{'attr':{'class':'bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded mt-2'}}) }}
+              </div>
+
+               {{ form_widget(booking_form.id, {'attr': {'hidden':'true'} }) }} 
+            {{ form_end(booking_form) }}
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    window.onload = function() {
+        //console.log(document.getElementById("show-available"));
+
+
+
+        var openmodal = document.querySelectorAll('.modal-open')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+    	event.preventDefault()
+    	toggleModal()
+      })
+    }
+    
+    const overlay = document.querySelector('.modal-overlay')
+    overlay.addEventListener('click', toggleModal)
+    
+    var closemodal = document.querySelectorAll('.modal-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+    
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+    	isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+    	toggleModal()
+      }
+    };
+    
+    
+    function toggleModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+
+    document.getElementById("filter").addEventListener("change",function(event) {
+        if(event.target.value == "All"){
+            //console.log(document.getElementById("all"));
+            for(let i=0; i< document.querySelectorAll(".booked").length; i++){
+                document.querySelectorAll(".booked")[i].style.display = 'block';
+            }
+        }
+        if(event.target.value == "Available"){
+            for(let i=0; i< document.querySelectorAll(".booked").length; i++){
+                document.querySelectorAll(".booked")[i].style.display = 'none';
+            }
+        }
+    });
+    console.log()
+
+    /*if (slots) {
+        slots.addEventListener('click', e => {
+          if (e.target.className === 'book-slot') {
+            if (confirm('Are you sure?')) {
+                const id = e.target.getAttribute('data-id');
+                // alert(id);
+                fetch(`/article/delete/${id}`, {
+                    method: 'DELETE'
+                }).then(res => window.location.reload());
+            }
+          }
+        });
+    }*/
+    
+    /*buttons.forEach(element => {
+        element.addEventListner('click', (e)=>{
+            console.log('someone hit me');
+        });
+    });*/
+    
+
+    for(let i=0; i<document.getElementsByClassName("book-slot").length; i++){
+        document.getElementsByClassName("book-slot")[i].addEventListener("click", function(e){
+            document.getElementById("form_id").value = e.target.value;
+            {% if slots %}
+                document.getElementById('book-date').innerHTML = "Date: {{ slots[0][1] | date('d F Y') }}"
+            {% endif %}
+          console.log(e.target.previousElementSibling)
+          document.getElementById('book-time').innerHTML = e.target.previousElementSibling.innerHTML;
+        })
+    }
+}
+</script>
+{% endblock %}

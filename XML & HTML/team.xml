@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./team.xsl"?>
+<team>
+    <members>
+        <name>Suresh Gonsalves</name>
+        <designation>Salon manager</designation>
+        <link>https://media.istockphoto.com/photos/portrait-of-happy-mature-man-smiling-picture-id1278978817?b=1&k=20&m=1278978817&s=170667a&w=0&h=iS-4Ma_LZ4BCznYaJZQsQwD5Ygtqzzuls6V5QUchFSY=</link>
+        <description>A Manager, oversees team members in a certain department to ensure it's performing effectively. Their main duties include hiring and training employees, creating and implementing business strategies and delegating tasks to team members.</description>
+    </members>
+    <members>
+        <name>Tejas Zambaulikar</name>
+        <designation>Senior stylist</designation>
+        <link>https://scontent-bom1-2.xx.fbcdn.net/v/t1.18169-9/14224913_507528232783456_7857847207925726375_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=174925&_nc_ohc=5wuVvoKRZ6IAX9A2qzo&_nc_ht=scontent-bom1-2.xx&oh=e20e73142220ad692eec10c5dce96a8b&oe=61C07732</link>
+        <description>Fashion stylists work for individuals, fashion houses and clothing brands. Their main responsibilities include providing fashion advice; choosing and co-ordinating outfits for models in photo shoots or actors in television and film; and choosing props and accessories and preparing them for shoots.</description>
+    </members>
+    <members>
+        <name>Pinky Sharma</name>
+        <designation>Salon receptionist</designation>
+        <link>https://images.unsplash.com/photo-1608277565122-b8443a713f41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBmYWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60</link>
+        <description>Salon Receptionist responsibilities include greeting customers upon their arrival, answering clients' questions about services via phone, email or in person and processing transactions. To be successful in this role, you should be highly organized and able to manage clients with grace, even during peak demand.</description>
+    </members>
+    <members>
+        <name>Srinivass Talaulikar</name>
+        <designation>Waxing specialist</designation>
+        <link>https://www.srinivass.tech/img/me-passport.jpg</link>
+        <description>The job duties of a wax specialist revolve around providing waxing or other hair removal services to clients. Your responsibilities in this career include waxing body parts such as the face, back, arms, legs, etc. You may work with different types of waxing equipment.</description>
+    </members>
+    <members>
+        <name>Santosh Karapurkar</name>
+        <designation>Shampooist</designation>
+        <link>https://media.istockphoto.com/photos/headshot-of-44-year-old-mixed-race-man-in-casual-polo-shirt-picture-id1264106963?b=1&k=20&m=1264106963&s=170667a&w=0&h=dLQliHpFkaweGQhiRfkNGkwsAPoKCEy9UWWk-m2iCCk=</link>
+        <description>Shampooists are often part-timers, in many cases working just on weekends. The role tends to be more general than the title suggests, involving sweeping up, greeting customers, making tea and coffee, and possibly answering the phone and booking appointments.</description>
+    </members>
+    <members>
+        <name>Ramesh Chipotle</name>
+        <designation>Head Barber</designation>
+        <link>https://media.istockphoto.com/photos/portrait-of-a-mature-man-with-a-little-smile-at-the-camera-right-side-picture-id1277873802?b=1&k=20&m=1277873802&s=170667a&w=0&h=jkQ_v0-o10phanZhWxRn9QpvCAUKn8qwdWT5BtR9QWk=</link>
+        <description>The barber's responsibilities include cutting, trimming, styling, and coloring client's hair according to their instructions, fitting and grooming hairpieces, and billing clients. You should also be able to provide hairstyle suggestions and haircare advice to clients.</description>
+    </members>
+    <members>
+        <name>Kumesh jhunjhunwala</name>
+        <designation>Barber Grade - I</designation>
+        <link>https://media.istockphoto.com/photos/portrait-of-a-handsome-black-man-picture-id1289461328?b=1&k=20&m=1289461328&s=170667a&w=0&h=SpRhSvRMO7UkXWo52mV9bf0bo6au6kC-2wsOGsQ0D2Y=</link>
+        <description>The barber's responsibilities include cutting, trimming, styling, and coloring client's hair according to their instructions, fitting and grooming hairpieces, and billing clients. You should also be able to provide hairstyle suggestions and haircare advice to clients.</description>
+    </members>
+    <members>
+        <name>Naresh Kanchana</name>
+        <designation>Barber Grade - II</designation>
+        <link>https://media.istockphoto.com/photos/portrait-young-confident-smart-asian-businessman-look-at-camera-and-picture-id1288538088?b=1&k=20&m=1288538088&s=170667a&w=0&h=3efMku7kSXUhpVrErAVVgxp6G91tRZ_5seygOn68RnE=</link>
+        <description>The barber's responsibilities include cutting, trimming, styling, and coloring client's hair according to their instructions, fitting and grooming hairpieces, and billing clients. You should also be able to provide hairstyle suggestions and haircare advice to clients.</description>
+    </members>
+    <members>
+        <name>Mihir Ahmed</name>
+        <designation>Barber Grade - III</designation>
+        <link>https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFuJTIwZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60</link>
+        <description>The barber's responsibilities include cutting, trimming, styling, and coloring client's hair according to their instructions, fitting and grooming hairpieces, and billing clients. You should also be able to provide hairstyle suggestions and haircare advice to clients.</description>
+    </members>
+</team>
